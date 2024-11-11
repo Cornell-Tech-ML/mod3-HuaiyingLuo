@@ -327,12 +327,20 @@ def _tensor_matrix_multiply(
         None : Fills in `out`
 
     """
+    # TODO: Implement for Task 3.2.
     a_batch_stride = a_strides[0] if a_shape[0] > 1 else 0
     b_batch_stride = b_strides[0] if b_shape[0] > 1 else 0
 
-    # TODO: Implement for Task 3.2.
-    raise NotImplementedError("Need to implement for Task 3.2")
-
+    for n in prange(out_shape[0]):
+        for i in range(out_shape[1]):
+            for j in range(out_shape[2]):
+                sum = 0.0
+                for k in range(a_shape[2]):
+                    a_index = n * a_batch_stride + i * a_strides[1] + k * a_strides[2]
+                    b_index = n * b_batch_stride + k * b_strides[1] + j * b_strides[2]
+                    sum += a_storage[a_index] * b_storage[b_index]
+                out_index = n * out_strides[0] + i * out_strides[1] + j * out_strides[2]
+                out[out_index] = sum
 
 tensor_matrix_multiply = njit(_tensor_matrix_multiply, parallel=True)
 assert tensor_matrix_multiply is not None

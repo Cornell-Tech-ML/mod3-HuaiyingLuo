@@ -13,8 +13,12 @@ You will need to modify `tensor_functions.py` slightly in this assignment.
 
 ```
 python run_tests.py
+```
 
-pytest -m task3_3
+For Task 3.1 debugging:
+
+```
+python project/parallel_check.py
 ```
 
 * Note:
