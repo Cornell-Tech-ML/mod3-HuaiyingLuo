@@ -49,8 +49,18 @@ class TensorOps:
     @staticmethod
     def matrix_multiply(a: Tensor, b: Tensor) -> Tensor:
         """Matrix multiply"""
-        raise NotImplementedError("Not implemented in this assignment")
-
+        # Ensure the inner dimensions match
+        assert a.shape[-1] == b.shape[-2], "Incompatible dimensions for matrix multiplication"
+        # Determine the output shape
+        out_shape = a.shape[:-1] + b.shape[-1:]
+        # Create an output tensor filled with zeros
+        out = a.zeros(out_shape)
+        # Perform the matrix multiplication
+        for i in range(out.shape[0]):
+            for j in range(out.shape[1]):
+                for k in range(a.shape[-1]):
+                    out[i, j] += a[i, k] * b[k, j]
+        return out
     cuda = False
 
 
