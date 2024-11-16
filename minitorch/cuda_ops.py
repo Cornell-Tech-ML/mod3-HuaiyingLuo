@@ -458,33 +458,40 @@ def _tensor_matrix_multiply(
     pi = cuda.threadIdx.x
     pj = cuda.threadIdx.y
 
-    # Code Plan:
-    # 1) Move across shared dimension by block dim.
-    #    a) Copy into shared memory for a matrix.
-    #    b) Copy into shared memory for b matrix
-    #    c) Compute the dot produce for position c[i, j]
+
     # TODO: Implement for Task 3.4.
-    accum = 0.0
+    # Initialize the accumulator for the dot product
+    accum = 0.0  
+
+    # Loop over blocks of the input matrices
     for idx in range(0, a_shape[2], BLOCK_DIM):
-        # We get the absolute value of the index with respect to all of the blocks
+        # Calculate the column index for `a` and row index for `b`
         k = idx + pj
-        # i and k must be within the shape. a has shape [batch, i, k]
+        # Load a block of `a` into shared memory if within bounds
         if i < a_shape[1] and k < a_shape[2]:
-            # We get the absolute value in a_storage by multiplying the batch dimension and indices with the strides
             a_shared[pi, pj] = a_storage[a_batch_stride * batch + a_strides[1] * i + a_strides[2] * k]
+        else:
+            a_shared[pi, pj] = 0.0  # Zero padding for out-of-bounds
+
         k = idx + pi
-        # j and k must be within the shape. b has shape [batch, k, j]
+        # Load a block of `b` into shared memory if within bounds
         if j < b_shape[2] and k < b_shape[1]:
-            # Getting absolute value in b_storage by multiplying the batch dimension and indices with the strides
             b_shared[pi, pj] = b_storage[b_batch_stride * batch + b_strides[2] * j + b_strides[1] * k]
-        # After writing to shared arrays we need to sync the threads
+        else:
+            b_shared[pi, pj] = 0.0  # Zero padding for out-of-bounds
+
+        # Synchronize threads to ensure all data is loaded into shared memory
         cuda.syncthreads()
+
+        # Perform the dot product for the current block
         for k in range(BLOCK_DIM):
-            if( idx + k ) < a_shape[2]:
-                accum += a_shared[pi, k] * b_shared[k, pj]
-    # We need to make sure i and j are within shape. out has shape [batch, i , j]
+            accum += a_shared[pi, k] * b_shared[k, pj]
+
+        # Synchronize threads before loading the next block
+        cuda.syncthreads()
+
+    # Write the accumulated result to the output matrix if within bounds
     if i < out_shape[1] and j < out_shape[2]:
-        # We find the absolute position in out storage by multiplying the strides with the batch dimension and the indices and set it to accum
         out[out_strides[0] * batch + out_strides[1] * i + out_strides[2] * j] = accum
 
 
