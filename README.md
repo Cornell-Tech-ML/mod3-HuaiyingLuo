@@ -109,8 +109,64 @@ sys	0m5.895s
 
 - Backend = CPU
 - Epoch = 490
-- Time per epoch = 
+- Time per epoch = 0.273 seconds
 - Training log:
+```
+Epoch  0  loss  4.588612050250033 correct 42
+Epoch  10  loss  1.2022648784346504 correct 47
+Epoch  20  loss  0.9079241803892858 correct 48
+Epoch  30  loss  0.21845585842280546 correct 49
+Epoch  40  loss  1.367006503709087 correct 49
+Epoch  50  loss  0.20761335073667767 correct 50
+Epoch  60  loss  1.100613824097555 correct 50
+Epoch  70  loss  0.049902051070969324 correct 49
+Epoch  80  loss  0.4619550272819754 correct 48
+Epoch  90  loss  0.7312306540784765 correct 50
+Epoch  100  loss  0.8783970672051982 correct 50
+Epoch  110  loss  2.2679069088176105 correct 49
+Epoch  120  loss  0.44788549371121056 correct 50
+Epoch  130  loss  0.00629042433619755 correct 50
+Epoch  140  loss  0.22037182186398416 correct 48
+Epoch  150  loss  1.0585895695998766 correct 49
+Epoch  160  loss  0.3065482275013245 correct 50
+Epoch  170  loss  0.4920822711430201 correct 50
+Epoch  180  loss  0.66674893574611 correct 50
+Epoch  190  loss  0.017073710148426444 correct 50
+Epoch  200  loss  1.1512315554665518 correct 48
+Epoch  210  loss  0.7147732955275342 correct 50
+Epoch  220  loss  0.8218124131238607 correct 50
+Epoch  230  loss  0.010236364502253199 correct 50
+Epoch  240  loss  0.10091602717583634 correct 48
+Epoch  250  loss  0.1937390797478568 correct 50
+Epoch  260  loss  1.0054196522132968 correct 50
+Epoch  270  loss  0.6712856504203221 correct 50
+Epoch  280  loss  0.670131258273504 correct 50
+Epoch  290  loss  0.029719939603099398 correct 50
+Epoch  300  loss  0.5374376384109786 correct 50
+Epoch  310  loss  0.21189029161815012 correct 50
+Epoch  320  loss  0.13462629864902464 correct 49
+Epoch  330  loss  0.5900707543553899 correct 50
+Epoch  340  loss  0.4580970293129518 correct 50
+Epoch  350  loss  0.36757134444490186 correct 50
+Epoch  360  loss  0.7221716295336493 correct 50
+Epoch  370  loss  0.5589400488672137 correct 50
+Epoch  380  loss  0.0008243347709218419 correct 49
+Epoch  390  loss  0.0004922104881670765 correct 50
+Epoch  400  loss  0.0028787098933120087 correct 50
+Epoch  410  loss  0.40896988075121604 correct 50
+Epoch  420  loss  1.4001703145313655 correct 48
+Epoch  430  loss  1.0261531615662913 correct 50
+Epoch  440  loss  0.40342219251781697 correct 50
+Epoch  450  loss  0.027018403850368827 correct 50
+Epoch  460  loss  7.209171477402004e-05 correct 50
+Epoch  470  loss  0.19655209188889816 correct 50
+Epoch  480  loss  0.09145736235482038 correct 50
+Epoch  490  loss  0.0007941790130494538 correct 50
+
+real	2m13.905s
+user	2m24.375s
+sys	0m28.369s
+```
 
 
 ### Split Dataset 
@@ -177,8 +233,64 @@ sys	0m5.488s
 
 - Backend = CPU
 - Epoch = 490
-- Time per epoch = 
+- Time per epoch = 0.279seconds
 - Training log:
+```
+Epoch  0  loss  7.141114869327801 correct 37
+Epoch  10  loss  5.597592684282591 correct 37
+Epoch  20  loss  6.388462981319186 correct 41
+Epoch  30  loss  3.5688898717489583 correct 44
+Epoch  40  loss  3.289370068721539 correct 46
+Epoch  50  loss  3.4420348771320652 correct 46
+Epoch  60  loss  2.810794866655522 correct 48
+Epoch  70  loss  2.0894252529069592 correct 48
+Epoch  80  loss  1.7878777530440875 correct 48
+Epoch  90  loss  2.9266715034197532 correct 48
+Epoch  100  loss  1.6233033894084368 correct 48
+Epoch  110  loss  1.6744252732029645 correct 48
+Epoch  120  loss  1.4698821181259152 correct 49
+Epoch  130  loss  2.413522290399298 correct 48
+Epoch  140  loss  1.4646796054277378 correct 49
+Epoch  150  loss  1.8043429607028116 correct 49
+Epoch  160  loss  1.156996056948217 correct 48
+Epoch  170  loss  1.3974212719633912 correct 47
+Epoch  180  loss  1.3715573789293312 correct 47
+Epoch  190  loss  0.28060636288011925 correct 50
+Epoch  200  loss  0.8429379100853537 correct 49
+Epoch  210  loss  1.6921990053738645 correct 50
+Epoch  220  loss  1.3626321989325634 correct 48
+Epoch  230  loss  1.486039008221202 correct 50
+Epoch  240  loss  1.766724512898925 correct 49
+Epoch  250  loss  0.2603624514209057 correct 47
+Epoch  260  loss  1.2686674731305774 correct 49
+Epoch  270  loss  0.9349104922642869 correct 48
+Epoch  280  loss  1.0920557093433039 correct 49
+Epoch  290  loss  1.9707406238706344 correct 49
+Epoch  300  loss  0.43756449636899536 correct 49
+Epoch  310  loss  1.238043136190053 correct 50
+Epoch  320  loss  0.6530268758344528 correct 50
+Epoch  330  loss  0.09661404975112033 correct 49
+Epoch  340  loss  1.3587232265638978 correct 50
+Epoch  350  loss  0.21343247000620258 correct 47
+Epoch  360  loss  1.5765255850943567 correct 48
+Epoch  370  loss  1.1911534547611957 correct 50
+Epoch  380  loss  0.733782731517659 correct 50
+Epoch  390  loss  0.17625341500059893 correct 50
+Epoch  400  loss  1.571972471352944 correct 47
+Epoch  410  loss  0.5837671147204758 correct 50
+Epoch  420  loss  0.720319535055284 correct 48
+Epoch  430  loss  0.18984140731677518 correct 50
+Epoch  440  loss  1.1648970164981662 correct 50
+Epoch  450  loss  1.0085038705625315 correct 50
+Epoch  460  loss  0.6186075315232483 correct 49
+Epoch  470  loss  0.7081356423207606 correct 50
+Epoch  480  loss  0.6964140455304174 correct 50
+Epoch  490  loss  0.1486767245513929 correct 48
+
+real	2m16.822s
+user	2m26.765s
+sys	0m28.364s
+```
 
 
 
@@ -244,19 +356,80 @@ user	14m1.822s
 sys	0m5.636s
 ```
 
-
 - Backend = CPU
+- Epoch = 490
+- Time per epoch = 0.274 seconds
+- Training log:
+```
+Epoch  0  loss  6.983560143802736 correct 36
+Epoch  10  loss  4.927875703650836 correct 40
+Epoch  20  loss  4.338361753655477 correct 42
+Epoch  30  loss  4.315362983818892 correct 45
+Epoch  40  loss  2.719201703619985 correct 45
+Epoch  50  loss  3.940961389526953 correct 44
+Epoch  60  loss  2.660430219160867 correct 44
+Epoch  70  loss  3.0135428400846824 correct 44
+Epoch  80  loss  2.601129600595331 correct 45
+Epoch  90  loss  3.3487799958965665 correct 45
+Epoch  100  loss  2.806934183510292 correct 46
+Epoch  110  loss  2.002863119690983 correct 44
+Epoch  120  loss  2.025471391150491 correct 45
+Epoch  130  loss  2.7578264154311567 correct 49
+Epoch  140  loss  1.9842800190061662 correct 44
+Epoch  150  loss  2.8219214887951907 correct 47
+Epoch  160  loss  2.528342683131812 correct 47
+Epoch  170  loss  1.8489772657859005 correct 49
+Epoch  180  loss  1.1154136477553902 correct 48
+Epoch  190  loss  1.8300178589635148 correct 47
+Epoch  200  loss  2.4903059118826247 correct 47
+Epoch  210  loss  1.3951812086541813 correct 48
+Epoch  220  loss  0.5940211410453577 correct 49
+Epoch  230  loss  1.1030600735141594 correct 48
+Epoch  240  loss  2.395284355047413 correct 50
+Epoch  250  loss  0.7889957210733388 correct 50
+Epoch  260  loss  1.226581352250959 correct 50
+Epoch  270  loss  2.2515800834464255 correct 47
+Epoch  280  loss  1.652720019331579 correct 49
+Epoch  290  loss  0.5339725435030869 correct 50
+Epoch  300  loss  1.9379395911091333 correct 48
+Epoch  310  loss  2.118470162419998 correct 50
+Epoch  320  loss  2.905093797325449 correct 49
+Epoch  330  loss  3.2658320791251327 correct 47
+Epoch  340  loss  1.0156761313382543 correct 49
+Epoch  350  loss  0.7732575477337182 correct 49
+Epoch  360  loss  1.3569860472817712 correct 49
+Epoch  370  loss  0.8436770746151243 correct 49
+Epoch  380  loss  1.5423134720582872 correct 49
+Epoch  390  loss  1.586941465653478 correct 49
+Epoch  400  loss  1.2254672077476354 correct 50
+Epoch  410  loss  0.3753741633021863 correct 50
+Epoch  420  loss  0.9321222019621406 correct 49
+Epoch  430  loss  0.8722361335119556 correct 50
+Epoch  440  loss  1.993522033140589 correct 49
+Epoch  450  loss  1.8070942543308233 correct 47
+Epoch  460  loss  0.8471124957024458 correct 49
+Epoch  470  loss  0.18618214266568833 correct 50
+Epoch  480  loss  0.77917984872029 correct 50
+Epoch  490  loss  0.8478431376217652 correct 50
+
+real	2m14.243s
+user	2m24.612s
+sys	0m28.928s
+```
+
+
+### Bigger Model Result
+- Hidden Layers = 300
+- Learning Rate = 0.05
+
+
+### Simple Dataset 
+- Backend = GPU
 - Epoch = 490
 - Time per epoch = 
 - Training log:
 
 
-### Bigger Model Result
-- Hidden Layers = 200
-- Learning Rate = 0.05
-
-
-### Simple Dataset 
 - Backend = CPU
 - Epoch = 490
 - Time per epoch = 
