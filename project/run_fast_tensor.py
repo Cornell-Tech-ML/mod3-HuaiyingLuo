@@ -47,9 +47,11 @@ class Linear(minitorch.Module):
     def forward(self, x):
         # TODO: Implement for Task 3.5.
         batch, in_size = x.shape
-        x_reshaped = x.view(batch, in_size)
-        weighted_sum = torch.matmul(x_reshaped, self.weights.value)
-        return weighted_sum + self.bias.value
+        reshaped_x = x.view(batch, in_size)
+        # Perform matrix multiplication between reshaped_x and weights
+        weighted_sum = reshaped_x @ self.weights.value
+        output = weighted_sum + self.bias.value       
+        return output
 
 class FastTrain:
     def __init__(self, hidden_layers, backend=FastTensorBackend):
