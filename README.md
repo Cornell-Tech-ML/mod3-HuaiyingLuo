@@ -38,3 +38,53 @@ The files that will be synced are:
         minitorch/tensor_data.py minitorch/tensor_functions.py minitorch/tensor_ops.py minitorch/operators.py minitorch/scalar.py minitorch/scalar_functions.py minitorch/module.py minitorch/autodiff.py minitorch/module.py project/run_manual.py project/run_scalar.py project/run_tensor.py minitorch/operators.py minitorch/module.py minitorch/autodiff.py minitorch/tensor.py minitorch/datasets.py minitorch/testing.py minitorch/optim.py
 
 
+## Task 3.5: Training
+
+### Small Model Result
+- Hidden Layers = 100
+- Learning Rate = 0.05
+
+### Simple Dataset 
+- Backend = GPU
+- Time per epoch = 
+- Image
+
+
+- Backend = CPU
+- Time per epoch =  
+- Image
+
+
+### Split Dataset 
+- Backend = GPU
+- Time per epoch = 
+- Image
+
+
+- Backend = CPU
+- Time per epoch =  
+- Image
+
+
+### Xor Dataset 
+- Backend = GPU
+- Time per epoch = 
+- Image
+
+
+- Backend = CPU
+- Time per epoch =  
+- Image
+
+
+### Bigger Model Result
+- Hidden Layers = 200
+- Learning Rate = 0.05
+
+
+### Simple Dataset 
+- Backend = GPU
+- Time per epoch = 
+- Image
+
+
