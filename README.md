@@ -48,6 +48,9 @@ Run marked test:
 pytest -m task1_1
 ```
 
+## Task 3.4: CUDA Matrix Multiplication
+Cuda matrix multiplication leads to speed-ups on large matrix operations compared with naive operations.
+
 
 
 ## Task 3.5: Training
@@ -438,8 +441,64 @@ sys	0m28.928s
 ### Simple Dataset
 - Backend = GPU
 - Epoch = 490
-- Time per epoch =
+- Time per epoch = 6.898 seconds
 - Training log:
+```
+Epoch  0  loss  5.798514453102914 correct 31
+Epoch  10  loss  0.8909209406458815 correct 50
+Epoch  20  loss  0.2414725075931958 correct 50
+Epoch  30  loss  0.615205399692642 correct 50
+Epoch  40  loss  0.7031654364131206 correct 50
+Epoch  50  loss  0.09717979651224831 correct 50
+Epoch  60  loss  0.6871621551149206 correct 50
+Epoch  70  loss  0.08304895509588883 correct 50
+Epoch  80  loss  0.3959701141759378 correct 50
+Epoch  90  loss  0.06959387265762736 correct 50
+Epoch  100  loss  0.2088031250899668 correct 50
+Epoch  110  loss  0.034595567851845824 correct 50
+Epoch  120  loss  0.17609391056917312 correct 50
+Epoch  130  loss  0.17095661178222363 correct 50
+Epoch  140  loss  0.040747721713693376 correct 50
+Epoch  150  loss  0.056684144071357453 correct 50
+Epoch  160  loss  0.059786762692641326 correct 50
+Epoch  170  loss  0.06278581420662838 correct 50
+Epoch  180  loss  0.014551484976645435 correct 50
+Epoch  190  loss  0.009109267923917851 correct 50
+Epoch  200  loss  0.039748020064302704 correct 50
+Epoch  210  loss  0.02305000201945048 correct 50
+Epoch  220  loss  0.009285544664962965 correct 50
+Epoch  230  loss  0.18066380239101051 correct 50
+Epoch  240  loss  0.028190483159080553 correct 50
+Epoch  250  loss  0.034477714353094525 correct 50
+Epoch  260  loss  0.011759743468297335 correct 50
+Epoch  270  loss  0.03838077063244866 correct 50
+Epoch  280  loss  0.11465005716775314 correct 50
+Epoch  290  loss  0.013873858775715361 correct 50
+Epoch  300  loss  0.07982523729023357 correct 50
+Epoch  310  loss  0.003312550188848877 correct 50
+Epoch  320  loss  0.008442727984033876 correct 50
+Epoch  330  loss  0.02337240660029505 correct 50
+Epoch  340  loss  0.09933918340079115 correct 50
+Epoch  350  loss  0.08659141522872352 correct 50
+Epoch  360  loss  0.05773859099060984 correct 50
+Epoch  370  loss  0.05154951960589961 correct 50
+Epoch  380  loss  0.06895517458372162 correct 50
+Epoch  390  loss  0.005062953248545563 correct 50
+Epoch  400  loss  0.024688851724403632 correct 50
+Epoch  410  loss  0.013173114493681672 correct 50
+Epoch  420  loss  0.01025760134689683 correct 50
+Epoch  430  loss  0.011255224603837473 correct 50
+Epoch  440  loss  0.021812281524704803 correct 50
+Epoch  450  loss  0.07671810058366589 correct 50
+Epoch  460  loss  0.06897535265371804 correct 50
+Epoch  470  loss  0.09086296286702845 correct 50
+Epoch  480  loss  0.014323893709709025 correct 50
+Epoch  490  loss  0.04987928898035065 correct 50
+
+real	16m0.204s
+user	15m47.287s
+sys	0m6.898s
+```
 
 
 - Backend = CPU
