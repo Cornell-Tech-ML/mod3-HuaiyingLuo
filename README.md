@@ -48,7 +48,7 @@ Run marked test:
 pytest -m task1_1
 ```
 
-## Task 3.4: CUDA Matrix Multiplication
+# Task 3.4: CUDA Matrix Multiplication
 Cuda matrix multiplication leads to speed-ups on large matrix operations compared with naive operations.
 
 Timing summary
@@ -73,16 +73,16 @@ Plot of performance:
 ![Matrix Multiplication Performance](performance.png)
 
 
-## Task 3.5: Training
+# Task 3.5: Training
 
-### Small Model Result
+## Small Model Result
 - Hidden Layers = 100
 - Learning Rate = 0.05
 
 ### Simple Dataset
 - Backend = GPU
 - Epoch = 490
-- Time per epoch = 1.767seconds
+- Time per epoch = 1.767 seconds
 - Training log:
 ```
 Epoch  0  loss  3.4642383960351144 correct 46
@@ -453,7 +453,7 @@ sys	0m28.928s
 ```
 
 
-### Bigger Model Result
+## Bigger Model Result
 - Hidden Layers = 300
 - Learning Rate = 0.05
 
