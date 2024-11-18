@@ -175,7 +175,9 @@ def tensor_map(
                 in_index = np.empty(MAX_DIMS, np.int32)
                 to_index(i, out_shape, out_index)
                 broadcast_index(out_index, out_shape, in_shape, in_index)
-                out[index_to_position(out_index, out_strides)] = fn(in_storage[index_to_position(in_index, in_strides)])
+                o = index_to_position(out_index, out_strides)
+                j = index_to_position(in_index, in_strides)
+                out[o] = fn(in_storage[j])
         else:
             for i in prange(len(out)):
                 out[i] = fn(in_storage[i])
@@ -224,11 +226,12 @@ def tensor_zip(
                 a_index = np.empty(MAX_DIMS, np.int32)
                 b_index = np.empty(MAX_DIMS, np.int32)
                 to_index(i, out_shape, out_index)
+                o = index_to_position(out_index, out_strides)
                 broadcast_index(out_index, out_shape, a_shape, a_index)
+                j = index_to_position(a_index, a_strides)
                 broadcast_index(out_index, out_shape, b_shape, b_index)
-                a_data = a_storage[index_to_position(a_index, a_strides)]
-                b_data = b_storage[index_to_position(b_index, b_strides)]
-                out[index_to_position(out_index, out_strides)] = fn(a_data, b_data)
+                k = index_to_position(b_index, b_strides)
+                out[o] = fn(a_storage[j], b_storage[k])
 
         else:
             for i in prange(len(out)):
@@ -275,10 +278,10 @@ def tensor_reduce(
             o = index_to_position(out_index, out_strides)
             reduced_value = out[o]
             j = index_to_position(out_index, a_strides)
-            st = a_strides[reduce_dim]
+            step = a_strides[reduce_dim]
             for s in range(dim):
                 reduced_value = fn(reduced_value, a_storage[j])
-                j += st
+                j += step
             out[o] = reduced_value
 
     return njit(_reduce, parallel=True)  # type: ignore
