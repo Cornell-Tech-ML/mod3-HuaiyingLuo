@@ -210,7 +210,9 @@ class LT(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Applies the chain rule to the tensor"""
         t1_shape, t2_shape = ctx.saved_values
-        return zeros(t1_shape), zeros(t2_shape)  # The less than operation is non-differentiable
+        return zeros(t1_shape), zeros(
+            t2_shape
+        )  # The less than operation is non-differentiable
 
 
 class EQ(Function):
@@ -224,7 +226,9 @@ class EQ(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
         """Applies the chain rule to the tensor"""
         t1_shape, t2_shape = ctx.saved_values
-        return zeros(t1_shape), zeros(t2_shape)  # The equal operation is non-differentiable
+        return zeros(t1_shape), zeros(
+            t2_shape
+        )  # The equal operation is non-differentiable
 
 
 class IsClose(Function):
@@ -232,6 +236,7 @@ class IsClose(Function):
     def forward(ctx: Context, t1: Tensor, t2: Tensor) -> Tensor:
         """Applies the is close function to the tensor"""
         return t1.f.is_close_zip(t1, t2)
+
     # no backward for IsClose
 
 
@@ -247,10 +252,14 @@ class Permute(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
         """Applies the chain rule to the tensor"""
         order: Tensor = ctx.saved_values[0]
-        order2: List[int] = [a[0] for a in sorted(
-            enumerate([order[i] for i in range(order.size)]), key=lambda a: a[1]
-        )]
+        order2: List[int] = [
+            a[0]
+            for a in sorted(
+                enumerate([order[i] for i in range(order.size)]), key=lambda a: a[1]
+            )
+        ]
         return grad_output._new(grad_output._tensor.permute(*order2)), 0.0
+
 
 class View(Function):
     @staticmethod

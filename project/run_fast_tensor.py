@@ -33,7 +33,7 @@ class Network(minitorch.Module):
         h = self.layer1.forward(x).relu()
         h = self.layer2.forward(h).relu()
         h = self.layer3.forward(h).sigmoid()
-        return h 
+        return h
 
 class Linear(minitorch.Module):
     def __init__(self, in_size, out_size, backend):
@@ -50,7 +50,7 @@ class Linear(minitorch.Module):
         reshaped_x = x.view(batch, in_size)
         # Perform matrix multiplication between reshaped_x and weights
         weighted_sum = reshaped_x @ self.weights.value
-        output = weighted_sum + self.bias.value       
+        output = weighted_sum + self.bias.value
         return output
 
 class FastTrain:

@@ -38,13 +38,25 @@ The files that will be synced are:
         minitorch/tensor_data.py minitorch/tensor_functions.py minitorch/tensor_ops.py minitorch/operators.py minitorch/scalar.py minitorch/scalar_functions.py minitorch/module.py minitorch/autodiff.py minitorch/module.py project/run_manual.py project/run_scalar.py project/run_tensor.py minitorch/operators.py minitorch/module.py minitorch/autodiff.py minitorch/tensor.py minitorch/datasets.py minitorch/testing.py minitorch/optim.py
 
 
+Command to run before commit for style check:
+```
+pre-commit run --all
+```
+
+Run marked test:
+```
+pytest -m task1_1
+```
+
+
+
 ## Task 3.5: Training
 
 ### Small Model Result
 - Hidden Layers = 100
 - Learning Rate = 0.05
 
-### Simple Dataset 
+### Simple Dataset
 - Backend = GPU
 - Epoch = 490
 - Time per epoch = 1.767seconds
@@ -169,7 +181,7 @@ sys	0m28.369s
 ```
 
 
-### Split Dataset 
+### Split Dataset
 - Backend = GPU
 - Epoch = 490
 - Time per epoch = 1.718 seconds
@@ -294,7 +306,7 @@ sys	0m28.364s
 
 
 
-### Xor Dataset 
+### Xor Dataset
 - Backend = GPU
 - Epoch = 490
 - Time per epoch = 1.739 seconds
@@ -423,16 +435,72 @@ sys	0m28.928s
 - Learning Rate = 0.05
 
 
-### Simple Dataset 
+### Simple Dataset
 - Backend = GPU
 - Epoch = 490
-- Time per epoch = 
+- Time per epoch =
 - Training log:
 
 
 - Backend = CPU
 - Epoch = 490
-- Time per epoch = 
+- Time per epoch = 0.788 seconds
 - Training log:
+```
+Epoch  0  loss  24.997888429884156 correct 42
+Epoch  10  loss  1.9977710089106813 correct 47
+Epoch  20  loss  1.0849428004583812 correct 47
+Epoch  30  loss  0.6966226237893877 correct 46
+Epoch  40  loss  0.7537120002861757 correct 46
+Epoch  50  loss  2.7584927272475164 correct 49
+Epoch  60  loss  0.1590842349481012 correct 48
+Epoch  70  loss  0.04938189852225763 correct 48
+Epoch  80  loss  0.8732640638426635 correct 46
+Epoch  90  loss  1.8270614963014813 correct 49
+Epoch  100  loss  0.6367030703084193 correct 49
+Epoch  110  loss  0.03432466801217939 correct 48
+Epoch  120  loss  0.08307979990539653 correct 49
+Epoch  130  loss  0.006641586207240679 correct 49
+Epoch  140  loss  1.2574906348379187 correct 49
+Epoch  150  loss  3.1916664300835804 correct 45
+Epoch  160  loss  0.10926963258194433 correct 49
+Epoch  170  loss  0.20033053776815415 correct 49
+Epoch  180  loss  0.3532287779721442 correct 49
+Epoch  190  loss  0.5537983729993953 correct 49
+Epoch  200  loss  0.004053522940715801 correct 47
+Epoch  210  loss  0.8599814793724911 correct 49
+Epoch  220  loss  1.5088882284961807 correct 48
+Epoch  230  loss  0.0035829130505281533 correct 48
+Epoch  240  loss  0.09772849285523483 correct 45
+Epoch  250  loss  0.5541534763226175 correct 50
+Epoch  260  loss  0.0690437467172504 correct 49
+Epoch  270  loss  1.8509169869047501 correct 48
+Epoch  280  loss  0.051185673953013114 correct 49
+Epoch  290  loss  0.6967868820148695 correct 48
+Epoch  300  loss  0.9581221688207786 correct 49
+Epoch  310  loss  0.38222294349772806 correct 49
+Epoch  320  loss  0.03237269256135708 correct 49
+Epoch  330  loss  0.052604746106597405 correct 49
+Epoch  340  loss  1.0929659599407502 correct 50
+Epoch  350  loss  0.037857316275780054 correct 48
+Epoch  360  loss  2.0269126175401153 correct 48
+Epoch  370  loss  0.23800353275515193 correct 49
+Epoch  380  loss  1.0935195488731901 correct 49
+Epoch  390  loss  1.5355614948219238 correct 48
+Epoch  400  loss  0.01581442689964284 correct 49
+Epoch  410  loss  0.44446154659098536 correct 50
+Epoch  420  loss  0.9684202939559606 correct 49
+Epoch  430  loss  0.002838184592184976 correct 50
+Epoch  440  loss  0.2600232235012616 correct 50
+Epoch  450  loss  1.6646587735007983 correct 48
+Epoch  460  loss  0.13714979104459077 correct 49
+Epoch  470  loss  0.6955418242065611 correct 50
+Epoch  480  loss  0.4230676175530659 correct 50
+Epoch  490  loss  0.585068652446055 correct 49
+
+real	6m26.221s
+user	7m51.914s
+sys	0m49.794s
+```
 
 

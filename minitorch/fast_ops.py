@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from typing import Callable, Optional
 
     from .tensor import Tensor
-    from .tensor_data import Index, Shape, Storage, Strides
+    from .tensor_data import Shape, Storage, Strides
 
 # TIP: Use `NUMBA_DISABLE_JIT=1 pytest tests/ -m task3_1` to run these tests without JIT.
 
@@ -169,7 +169,11 @@ def tensor_map(
         in_strides: Strides,
     ) -> None:
         # TODO: Implement for Task 3.1.
-        if (len(out_strides) != len(in_strides) or (out_strides != in_strides).any() or (out_shape != in_shape).any()):
+        if (
+            len(out_strides) != len(in_strides)
+            or (out_strides != in_strides).any()
+            or (out_shape != in_shape).any()
+        ):
             for i in prange(len(out)):
                 out_index = np.empty(MAX_DIMS, np.int32)
                 in_index = np.empty(MAX_DIMS, np.int32)
@@ -181,6 +185,7 @@ def tensor_map(
         else:
             for i in prange(len(out)):
                 out[i] = fn(in_storage[i])
+
     # Compile it using `njit`
     return njit(_map, parallel=True)  # type: ignore
 
@@ -220,7 +225,14 @@ def tensor_zip(
         b_strides: Strides,
     ) -> None:
         # TODO: Implement for Task 3.1.
-        if (len(out_strides) != len(a_strides) or len(out_strides) != len(b_strides) or (out_strides != a_strides).any() or (out_strides != b_strides).any() or (out_shape != a_shape).any() or (out_shape != b_shape).any()):
+        if (
+            len(out_strides) != len(a_strides)
+            or len(out_strides) != len(b_strides)
+            or (out_strides != a_strides).any()
+            or (out_strides != b_strides).any()
+            or (out_shape != a_shape).any()
+            or (out_shape != b_shape).any()
+        ):
             for i in prange(len(out)):
                 out_index = np.empty(MAX_DIMS, np.int32)
                 a_index = np.empty(MAX_DIMS, np.int32)
@@ -344,6 +356,7 @@ def _tensor_matrix_multiply(
                     acc += a_storage[a_index] * b_storage[b_index]
                 o = n * out_strides[0] + i * out_strides[1] + j * out_strides[2]
                 out[o] = acc
+
 
 tensor_matrix_multiply = njit(_tensor_matrix_multiply, parallel=True)
 assert tensor_matrix_multiply is not None

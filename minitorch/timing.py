@@ -1,12 +1,8 @@
-import random
-from collections import defaultdict
 import minitorch
 import time
-import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-from minitorch.cuda_ops import CudaOps
 
 FastTensorBackend = minitorch.TensorBackend(minitorch.FastOps)
 GPUBackend = minitorch.TensorBackend(minitorch.CudaOps)
@@ -64,11 +60,12 @@ if __name__ == "__main__":
     cuda_means = [times[size]["gpu"] for size in sizes]
 
     plt.figure(figsize=(10, 6))
-    plt.plot(sizes, fast_means, label='FastOps', marker='o')
-    plt.plot(sizes, cuda_means, label='CudaOps', marker='o')
-    plt.xlabel('Matrix Size')
-    plt.ylabel('Average Time (s)')
-    plt.title('Matrix Multiplication Performance')
+    plt.plot(sizes, fast_means, label="FastOps", marker="o")
+    plt.plot(sizes, cuda_means, label="CudaOps", marker="o")
+    plt.xlabel("Matrix Size")
+    plt.ylabel("Average Time (s)")
+    plt.title("Matrix Multiplication Performance")
     plt.legend()
     plt.grid(True)
+    plt.savefig("matrix_multiplication_performance.png")
     plt.show()

@@ -89,7 +89,7 @@ def broadcast_index(
         big_index : multidimensional index of bigger tensor
         big_shape : tensor shape of bigger tensor
         shape : tensor shape of smaller tensor
-        out_index : multidimensional index of smaller tensor. 
+        out_index : multidimensional index of smaller tensor.
 
     Returns:
     -------
@@ -280,8 +280,8 @@ class TensorData:
         return TensorData(
             self._storage,
             tuple(self._shape[i] for i in order),
-            tuple(self._strides[i] for i in order)
-            )
+            tuple(self._strides[i] for i in order),
+        )
 
     def to_string(self) -> str:
         """Convert to string"""

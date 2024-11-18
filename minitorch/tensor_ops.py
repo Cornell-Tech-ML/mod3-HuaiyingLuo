@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from operator import index
 from typing import TYPE_CHECKING, Callable, Optional, Type
 
 import numpy as np
@@ -17,7 +16,7 @@ from .tensor_data import (
 
 if TYPE_CHECKING:
     from .tensor import Tensor
-    from .tensor_data import Index,Shape, Storage, Strides
+    from .tensor_data import Index, Shape, Storage, Strides
 
 
 class MapProto(Protocol):
@@ -50,7 +49,9 @@ class TensorOps:
     def matrix_multiply(a: Tensor, b: Tensor) -> Tensor:
         """Matrix multiply"""
         # Ensure the inner dimensions match
-        assert a.shape[-1] == b.shape[-2], "Incompatible dimensions for matrix multiplication"
+        assert (
+            a.shape[-1] == b.shape[-2]
+        ), "Incompatible dimensions for matrix multiplication"
         # Determine the output shape
         out_shape = a.shape[:-1] + b.shape[-1:]
         # Create an output tensor filled with zeros
@@ -61,6 +62,7 @@ class TensorOps:
                 for k in range(a.shape[-1]):
                     out[i, j] += a[i, k] * b[k, j]
         return out
+
     cuda = False
 
 
@@ -352,7 +354,7 @@ def tensor_zip(
             broadcast_index(out_index, out_shape, b_shape, b_index)
             k = index_to_position(b_index, b_strides)
             out[o] = fn(a_storage[j], b_storage[k])
-    
+
     return _zip
 
 

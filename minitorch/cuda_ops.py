@@ -229,7 +229,8 @@ def tensor_zip(
             a_pos = index_to_position(a_index, a_strides)
             broadcast_index(out_index, out_shape, b_shape, b_index)
             b_pos = index_to_position(b_index, b_strides)
-            out[o_pos] = fn(a_storage[a_pos], b_storage[b_pos])           
+            out[o_pos] = fn(a_storage[a_pos], b_storage[b_pos])
+
     return cuda.jit()(_zip)  # type: ignore
 
 
@@ -336,9 +337,9 @@ def tensor_reduce(
                 cache[pos] = a_storage[a_pos]
                 cuda.syncthreads()
                 idx = 0
-                while 2 ** idx < BLOCK_DIM:
-                    if pos % ((2 ** idx) * 2) == 0:
-                        cache[pos] = fn(cache[pos], cache[pos + (2 ** idx)])
+                while 2**idx < BLOCK_DIM:
+                    if pos % ((2**idx) * 2) == 0:
+                        cache[pos] = fn(cache[pos], cache[pos + (2**idx)])
                         cuda.syncthreads()
                     idx += 1
             if pos == 0:
@@ -402,7 +403,6 @@ def _mm_practice(out: Storage, a: Storage, b: Storage, size: int) -> None:
     out[out_pos] = acc
 
 
-
 jit_mm_practice = jit(_mm_practice)
 
 
@@ -463,10 +463,9 @@ def _tensor_matrix_multiply(
     pi = cuda.threadIdx.x
     pj = cuda.threadIdx.y
 
-
     # TODO: Implement for Task 3.4.
     # Initialize the accumulator for the dot product
-    accum = 0.0  
+    accum = 0.0
 
     # Loop over blocks of the input matrices
     for idx in range(0, a_shape[2], BLOCK_DIM):
@@ -502,5 +501,6 @@ def _tensor_matrix_multiply(
     if i < out_shape[1] and j < out_shape[2]:
         out_index = out_strides[0] * batch + out_strides[1] * i + out_strides[2] * j
         out[out_index] = accum
+
 
 tensor_matrix_multiply = jit(_tensor_matrix_multiply)
