@@ -240,7 +240,7 @@ def tensor_zip(
 
 
 def _sum_practice(out: Storage, a: Storage, size: int) -> None:
-    """This is a practice sum kernel to prepare for reduce.
+    r"""A practice sum kernel to prepare for reduce.
 
     Given an array of length $n$ and out of size $n // \text{blockDIM}$
     it should sum up each blockDim values into an out cell.
@@ -257,11 +257,11 @@ def _sum_practice(out: Storage, a: Storage, size: int) -> None:
     ----
         out (Storage): storage for `out` tensor.
         a (Storage): storage for `a` tensor.
-        size (int):  length of a.
+        size (int): length of a.
 
     Returns:
     -------
-        None: Fills in `out`
+        None: Fills in `out`.
 
     """
     BLOCK_DIM = 32
@@ -359,7 +359,7 @@ def tensor_reduce(
 
 
 def _mm_practice(out: Storage, a: Storage, b: Storage, size: int) -> None:
-    """This is a practice square MM kernel to prepare for matmul.
+    r"""A practice square MM kernel to prepare for matmul.
 
     Given a storage `out` and two storage `a` and `b`. Where we know
     both are shape [size, size] with strides [size, 1].

@@ -53,7 +53,7 @@ class TensorOps:
             a.shape[-1] == b.shape[-2]
         ), "Incompatible dimensions for matrix multiplication"
         # Determine the output shape
-        out_shape = a.shape[:-1] + b.shape[-1:]
+        out_shape = a.shape[:-1] + b.shape[-1:]  # type: ignore
         # Create an output tensor filled with zeros
         out = a.zeros(out_shape)
         # Perform the matrix multiplication

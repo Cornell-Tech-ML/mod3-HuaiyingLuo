@@ -1,4 +1,4 @@
-"""This module initializes the minitorch package, importing essential components for tensor operations, automatic differentiation, and more."""
+"""Initializes the minitorch package, importing essential components for tensor operations, automatic differentiation, and more."""
 
 from .testing import MathTest, MathTestVariable  # type: ignore # noqa: F401,F403
 from .fast_ops import *  # noqa: F401,F403
