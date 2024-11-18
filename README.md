@@ -51,6 +51,26 @@ pytest -m task1_1
 ## Task 3.4: CUDA Matrix Multiplication
 Cuda matrix multiplication leads to speed-ups on large matrix operations compared with naive operations.
 
+Timing summary
+- Size: 64
+    fast: 0.00352
+    gpu: 0.00676
+- Size: 128
+    fast: 0.01732
+    gpu: 0.01534
+- Size: 256
+    fast: 0.10131
+    gpu: 0.06049
+- Size: 512
+    fast: 1.02714
+    gpu: 0.27462
+- Size: 1024
+    fast: 8.35957
+    gpu: 1.01676
+
+Plot of performance:
+
+![Matrix Multiplication Performance](performance.png)
 
 
 ## Task 3.5: Training

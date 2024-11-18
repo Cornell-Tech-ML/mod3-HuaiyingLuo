@@ -69,7 +69,3 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.savefig("matrix_multiplication_performance.png")
     plt.show()
-
-    # Save the image to Colab
-    from google.colab import files
-    files.download("matrix_multiplication_performance.png")
