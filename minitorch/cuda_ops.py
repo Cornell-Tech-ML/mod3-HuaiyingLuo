@@ -470,18 +470,21 @@ def _tensor_matrix_multiply(
 
     # Loop over blocks of the input matrices
     for idx in range(0, a_shape[2], BLOCK_DIM):
-        # Calculate the column index for `a` and row index for `b`
+        # Calculate the column index for `a`
         k = idx + pj
         # Load a block of `a` into shared memory if within bounds
         if i < a_shape[1] and k < a_shape[2]:
-            a_shared[pi, pj] = a_storage[a_batch_stride * batch + a_strides[1] * i + a_strides[2] * k]
+            a_index = a_batch_stride * batch + a_strides[1] * i + a_strides[2] * k
+            a_shared[pi, pj] = a_storage[a_index]
         else:
             a_shared[pi, pj] = 0.0  # Zero padding for out-of-bounds
 
+        # Calculate the row index for `b`
         k = idx + pi
         # Load a block of `b` into shared memory if within bounds
         if j < b_shape[2] and k < b_shape[1]:
-            b_shared[pi, pj] = b_storage[b_batch_stride * batch + b_strides[2] * j + b_strides[1] * k]
+            b_index = b_batch_stride * batch + b_strides[2] * j + b_strides[1] * k
+            b_shared[pi, pj] = b_storage[b_index]
         else:
             b_shared[pi, pj] = 0.0  # Zero padding for out-of-bounds
 
@@ -497,7 +500,7 @@ def _tensor_matrix_multiply(
 
     # Write the accumulated result to the output matrix if within bounds
     if i < out_shape[1] and j < out_shape[2]:
-        out[out_strides[0] * batch + out_strides[1] * i + out_strides[2] * j] = accum
-
+        out_index = out_strides[0] * batch + out_strides[1] * i + out_strides[2] * j
+        out[out_index] = accum
 
 tensor_matrix_multiply = jit(_tensor_matrix_multiply)
