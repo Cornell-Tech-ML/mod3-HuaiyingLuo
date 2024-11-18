@@ -177,7 +177,9 @@ def tensor_map(
         if i < out_size:
             to_index(i, out_shape, out_index)
             broadcast_index(out_index, out_shape, in_shape, in_index)
-            out[index_to_position(out_index, out_strides)] = fn(in_storage[index_to_position(in_index, in_strides)])
+            o_position = index_to_position(out_index, out_strides)
+            i_position = index_to_position(in_index, in_strides)
+            out[o_position] = fn(in_storage[i_position])
 
     return cuda.jit()(_map)  # type: ignore
 
@@ -222,12 +224,12 @@ def tensor_zip(
         # TODO: Implement for Task 3.3.
         if i < out_size:
             to_index(i, out_shape, out_index)
+            o_pos = index_to_position(out_index, out_strides)
             broadcast_index(out_index, out_shape, a_shape, a_index)
+            a_pos = index_to_position(a_index, a_strides)
             broadcast_index(out_index, out_shape, b_shape, b_index)
-            a_data = a_storage[index_to_position(a_index, a_strides)]
-            b_data = b_storage[index_to_position(b_index, b_strides)]
-            out[index_to_position(out_index, out_strides)] = fn(a_data, b_data)
-
+            b_pos = index_to_position(b_index, b_strides)
+            out[o_pos] = fn(a_storage[a_pos], b_storage[b_pos])           
     return cuda.jit()(_zip)  # type: ignore
 
 
@@ -325,11 +327,13 @@ def tensor_reduce(
         cache[pos] = reduce_value
         if out_pos < out_size:
             to_index(out_pos, out_shape, out_index)
+            out_pos = index_to_position(out_index, out_strides)
             dim = a_shape[reduce_dim]
             out_index[reduce_dim] = out_index[reduce_dim] * BLOCK_DIM + pos
 
             if out_index[reduce_dim] < dim:
-                cache[pos] = a_storage[index_to_position(out_index, a_strides)]
+                a_pos = index_to_position(out_index, a_strides)
+                cache[pos] = a_storage[a_pos]
                 cuda.syncthreads()
                 idx = 0
                 while 2 ** idx < BLOCK_DIM:
@@ -338,7 +342,7 @@ def tensor_reduce(
                         cuda.syncthreads()
                     idx += 1
             if pos == 0:
-                out[index_to_position(out_index, out_strides)] = cache[0]
+                out[out_pos] = cache[0]
 
     return jit(_reduce)  # type: ignore
 
@@ -389,12 +393,13 @@ def _mm_practice(out: Storage, a: Storage, b: Storage, size: int) -> None:
     b_shared[i, j] = b[size * i + j]
     cuda.syncthreads()
 
-    accum = 0.0
+    acc = 0.0
 
     for k in range(size):
-        accum += a_shared[i, k] * b_shared[k, j]
+        acc += a_shared[i, k] * b_shared[k, j]
 
-    out[size * i + j] = accum
+    out_pos = size * i + j
+    out[out_pos] = acc
 
 
 

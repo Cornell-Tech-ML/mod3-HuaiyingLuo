@@ -175,9 +175,9 @@ def tensor_map(
                 in_index = np.empty(MAX_DIMS, np.int32)
                 to_index(i, out_shape, out_index)
                 broadcast_index(out_index, out_shape, in_shape, in_index)
-                o = index_to_position(out_index, out_strides)
-                j = index_to_position(in_index, in_strides)
-                out[o] = fn(in_storage[j])
+                out_pos = index_to_position(out_index, out_strides)
+                in_pos = index_to_position(in_index, in_strides)
+                out[out_pos] = fn(in_storage[in_pos])
         else:
             for i in prange(len(out)):
                 out[i] = fn(in_storage[i])
@@ -226,12 +226,12 @@ def tensor_zip(
                 a_index = np.empty(MAX_DIMS, np.int32)
                 b_index = np.empty(MAX_DIMS, np.int32)
                 to_index(i, out_shape, out_index)
-                o = index_to_position(out_index, out_strides)
+                out_pos = index_to_position(out_index, out_strides)
                 broadcast_index(out_index, out_shape, a_shape, a_index)
-                j = index_to_position(a_index, a_strides)
+                a_pos = index_to_position(a_index, a_strides)
                 broadcast_index(out_index, out_shape, b_shape, b_index)
-                k = index_to_position(b_index, b_strides)
-                out[o] = fn(a_storage[j], b_storage[k])
+                b_pos = index_to_position(b_index, b_strides)
+                out[out_pos] = fn(a_storage[a_pos], b_storage[b_pos])
 
         else:
             for i in prange(len(out)):
@@ -275,14 +275,14 @@ def tensor_reduce(
             out_index = np.empty(MAX_DIMS, np.int32)
             dim = a_shape[reduce_dim]
             to_index(i, out_shape, out_index)
-            o = index_to_position(out_index, out_strides)
-            reduced_value = out[o]
-            j = index_to_position(out_index, a_strides)
+            out_pos = index_to_position(out_index, out_strides)
+            acc = out[out_pos]
+            a_pos = index_to_position(out_index, a_strides)
             step = a_strides[reduce_dim]
-            for s in range(dim):
-                reduced_value = fn(reduced_value, a_storage[j])
-                j += step
-            out[o] = reduced_value
+            for _ in range(dim):
+                acc = fn(acc, a_storage[a_pos])
+                a_pos += step
+            out[out_pos] = acc
 
     return njit(_reduce, parallel=True)  # type: ignore
 
@@ -337,13 +337,13 @@ def _tensor_matrix_multiply(
     for n in prange(out_shape[0]):
         for i in range(out_shape[1]):
             for j in range(out_shape[2]):
-                sum = 0.0
+                acc = 0.0
                 for k in range(a_shape[2]):
                     a_index = n * a_batch_stride + i * a_strides[1] + k * a_strides[2]
                     b_index = n * b_batch_stride + k * b_strides[1] + j * b_strides[2]
-                    sum += a_storage[a_index] * b_storage[b_index]
-                out_index = n * out_strides[0] + i * out_strides[1] + j * out_strides[2]
-                out[out_index] = sum
+                    acc += a_storage[a_index] * b_storage[b_index]
+                o = n * out_strides[0] + i * out_strides[1] + j * out_strides[2]
+                out[o] = acc
 
 tensor_matrix_multiply = njit(_tensor_matrix_multiply, parallel=True)
 assert tensor_matrix_multiply is not None

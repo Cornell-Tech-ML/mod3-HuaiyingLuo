@@ -46,13 +46,71 @@ The files that will be synced are:
 
 ### Simple Dataset 
 - Backend = GPU
-- Time per epoch = 
-- Image
+- Epoch = 490
+- Time per epoch = 1.767seconds
+- Training log:
+```
+Epoch  0  loss  3.4642383960351144 correct 46
+Epoch  10  loss  2.3278845833380557 correct 49
+Epoch  20  loss  0.4651712766371487 correct 50
+Epoch  30  loss  0.7545256295023387 correct 49
+Epoch  40  loss  0.38729918502821464 correct 49
+Epoch  50  loss  0.7292287505254642 correct 50
+Epoch  60  loss  0.579246397436999 correct 50
+Epoch  70  loss  0.02728924092232261 correct 50
+Epoch  80  loss  0.4554630169497637 correct 50
+Epoch  90  loss  0.1757181824203757 correct 50
+Epoch  100  loss  0.23096190756102103 correct 50
+Epoch  110  loss  0.45525324260777 correct 50
+Epoch  120  loss  0.028604872999878114 correct 50
+Epoch  130  loss  0.29924534374413075 correct 50
+Epoch  140  loss  0.3000448448070087 correct 50
+Epoch  150  loss  0.6367819988735982 correct 50
+Epoch  160  loss  0.0323421870681993 correct 50
+Epoch  170  loss  0.3323041901899031 correct 50
+Epoch  180  loss  0.06553964594866286 correct 50
+Epoch  190  loss  0.09920575219289703 correct 50
+Epoch  200  loss  0.09259755941917995 correct 50
+Epoch  210  loss  0.3591862976027924 correct 50
+Epoch  220  loss  0.242410645221595 correct 50
+Epoch  230  loss  0.21316135926988092 correct 50
+Epoch  240  loss  0.05983817032748592 correct 50
+Epoch  250  loss  0.34602161595952485 correct 50
+Epoch  260  loss  0.010057568112297743 correct 50
+Epoch  270  loss  0.30427070228470904 correct 50
+Epoch  280  loss  0.05136626707554102 correct 50
+Epoch  290  loss  0.03269814909039719 correct 50
+Epoch  300  loss  0.1392701476622757 correct 50
+Epoch  310  loss  0.04531973452194237 correct 50
+Epoch  320  loss  0.15319627166003436 correct 50
+Epoch  330  loss  0.19953589436601724 correct 50
+Epoch  340  loss  0.012127316686109255 correct 50
+Epoch  350  loss  0.1588833082192919 correct 50
+Epoch  360  loss  0.24189919643330257 correct 50
+Epoch  370  loss  0.006061930806990839 correct 50
+Epoch  380  loss  0.0006895196378483121 correct 50
+Epoch  390  loss  0.14381046749115645 correct 50
+Epoch  400  loss  0.17012442626884305 correct 50
+Epoch  410  loss  0.03933693990172919 correct 50
+Epoch  420  loss  0.013895165671072194 correct 50
+Epoch  430  loss  0.09369922507852367 correct 50
+Epoch  440  loss  0.22890352490653695 correct 50
+Epoch  450  loss  0.05303193768552365 correct 50
+Epoch  460  loss  9.881678287902721e-06 correct 50
+Epoch  470  loss  0.042230740574841476 correct 50
+Epoch  480  loss  0.0908291022392584 correct 50
+Epoch  490  loss  0.005245470308977125 correct 50
+
+real	14m25.682s
+user	14m15.082s
+sys	0m5.895s
+```
 
 
 - Backend = CPU
-- Time per epoch =  
-- Image
+- Epoch = 490
+- Time per epoch = 
+- Training log:
 
 
 ### Split Dataset 
@@ -60,6 +118,7 @@ The files that will be synced are:
 - Epoch = 490
 - Time per epoch = 1.718 seconds
 - Training log:
+```
 Epoch  0  loss  6.4923732220058765 correct 35
 Epoch  10  loss  6.833289866257934 correct 35
 Epoch  20  loss  4.551905340255043 correct 40
@@ -114,25 +173,82 @@ Epoch  490  loss  0.8152517616701986 correct 50
 real	14m1.765s
 user	13m51.879s
 sys	0m5.488s
+```
 
-
-
-- Backend = GPU
+- Backend = CPU
 - Epoch = 490
-- Time per epoch = 1.718 seconds
+- Time per epoch = 
 - Training log:
 
 
 
 ### Xor Dataset 
 - Backend = GPU
-- Time per epoch = 
-- Image
+- Epoch = 490
+- Time per epoch = 1.739 seconds
+- Training log:
+```
+Epoch  0  loss  7.8198942820439425 correct 22
+Epoch  10  loss  5.014634084559113 correct 45
+Epoch  20  loss  4.887673865695592 correct 45
+Epoch  30  loss  3.9106707699031062 correct 46
+Epoch  40  loss  3.57493670214052 correct 48
+Epoch  50  loss  2.507456358745772 correct 49
+Epoch  60  loss  2.111457221284928 correct 50
+Epoch  70  loss  2.993161280284903 correct 49
+Epoch  80  loss  1.2071425901711672 correct 49
+Epoch  90  loss  0.9660317675073966 correct 50
+Epoch  100  loss  1.8335038983987613 correct 50
+Epoch  110  loss  0.5383462660125773 correct 48
+Epoch  120  loss  2.1849131361076815 correct 50
+Epoch  130  loss  0.3444292047195203 correct 50
+Epoch  140  loss  0.7235575445728621 correct 50
+Epoch  150  loss  0.6735231891257463 correct 50
+Epoch  160  loss  1.342505920511953 correct 49
+Epoch  170  loss  0.3965424220645676 correct 50
+Epoch  180  loss  1.213552020206972 correct 50
+Epoch  190  loss  0.38866633827859604 correct 50
+Epoch  200  loss  0.8943112498577672 correct 50
+Epoch  210  loss  0.2532878646569045 correct 50
+Epoch  220  loss  0.4445670027439339 correct 50
+Epoch  230  loss  0.6509120443138124 correct 50
+Epoch  240  loss  0.901913320535603 correct 50
+Epoch  250  loss  0.6439373566951871 correct 50
+Epoch  260  loss  0.3588706519383154 correct 50
+Epoch  270  loss  0.709448932296606 correct 50
+Epoch  280  loss  0.25168863459072355 correct 50
+Epoch  290  loss  0.5135055237980736 correct 50
+Epoch  300  loss  0.5751478321738481 correct 50
+Epoch  310  loss  0.23131963382565734 correct 50
+Epoch  320  loss  0.37115732356186104 correct 50
+Epoch  330  loss  0.8324795537017685 correct 50
+Epoch  340  loss  0.6730471132480412 correct 50
+Epoch  350  loss  0.2773811159180983 correct 50
+Epoch  360  loss  0.2887648076391624 correct 50
+Epoch  370  loss  0.5209435749283122 correct 50
+Epoch  380  loss  0.37890858816516676 correct 50
+Epoch  390  loss  0.40144748439805833 correct 50
+Epoch  400  loss  0.1605697080317301 correct 50
+Epoch  410  loss  0.09974888919592005 correct 50
+Epoch  420  loss  0.09490225384911632 correct 50
+Epoch  430  loss  0.10670741813960223 correct 50
+Epoch  440  loss  0.3472029884099912 correct 50
+Epoch  450  loss  0.3003881438957835 correct 50
+Epoch  460  loss  0.35894166005378686 correct 50
+Epoch  470  loss  0.10725837297910024 correct 50
+Epoch  480  loss  0.2209247813101442 correct 50
+Epoch  490  loss  0.3822252201865803 correct 50
+
+real	14m12.153s
+user	14m1.822s
+sys	0m5.636s
+```
 
 
 - Backend = CPU
-- Time per epoch =  
-- Image
+- Epoch = 490
+- Time per epoch = 
+- Training log:
 
 
 ### Bigger Model Result
@@ -141,8 +257,9 @@ sys	0m5.488s
 
 
 ### Simple Dataset 
-- Backend = GPU
+- Backend = CPU
+- Epoch = 490
 - Time per epoch = 
-- Image
+- Training log:
 
 
